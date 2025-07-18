@@ -70,7 +70,7 @@ const registerUser = asyncHandler(async (req, res) => {
     )
 })
 
-const login = asyncHandler(async (req, res) => {
+const loginUser = asyncHandler(async (req, res) => {
   
   const { username, email, password } = req.body;
   if (!(username || email)) {
@@ -115,6 +115,6 @@ const login = asyncHandler(async (req, res) => {
 
 export {
   registerUser,
-  login,
+  loginUser,
   generateAccessAndrefreshToken,
 }

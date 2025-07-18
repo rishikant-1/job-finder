@@ -1,7 +1,7 @@
 // JobsPage.jsx
 import React, { useState } from 'react';
 import Sidebar from '../SideBar/Sidebar';
-import Jobs from '../../HomePage/Jobs/Jobs';
+import Jobs from '../../HomePage/JobSection/Jobs';
 import { HiOutlineMenu } from 'react-icons/hi';
 import TopCompanies from '../Top-Company/TopCompanies';
 

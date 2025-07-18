@@ -12,6 +12,7 @@ import Login from './component/Auth/Login.jsx'
 import Register from './component/Auth/Register.jsx'
 import JobDetail from './component/JobDetails/JobDetail.jsx'
 import ProtectedRoute from './Protected.jsx'
+import ApplyForm from './component/JobDetails/ApplyForm/ApplyForm.jsx'
 
 
 createRoot(document.getElementById('root')).render(
@@ -21,13 +22,14 @@ createRoot(document.getElementById('root')).render(
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/jobs" element={<JobMainPage />}>
-          </Route>
-          <Route path='job-details' element={
-            <ProtectedRoute>
-              <JobDetail />
-            </ProtectedRoute>} 
-          />
+          <Route path="/jobs" element={<JobMainPage />} />
+          <Route path='apply-form'
+              element={<ProtectedRoute children={<ApplyForm />} />
+              } />
+          <Route path='job-details/:id'
+            element={
+              <ProtectedRoute children={<JobDetail />} />
+            } />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/login" element={<Login />} />
