@@ -23,7 +23,7 @@ function Home() {
     }
     fetchData()
   },[])
-  
+
   return (
     <div>
       <Hero />
@@ -34,7 +34,7 @@ function Home() {
           <Link to="/jobs" className='text-[#309689] sm:font-semibold font-medium text-nowrap hover:underline mt-2 text-md sm:text-xl'>View All</Link>
         </div>
         {
-          data?.map((data, index) => <Jobs key={index} data={data} />)
+          data.slice(0,6)?.map((data, index) => <Jobs key={index} data={data} />)
         }
         
       </div>

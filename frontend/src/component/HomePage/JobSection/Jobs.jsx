@@ -17,8 +17,8 @@ function Jobs({ data }) {
       <div className="flex items-center rounded-lg gap-3 py-2">
         <img className="w-8 h-8 sm:w-10 sm:h-10" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0w6qiEjDWopTV3tllAh_sKaQbe3dI588aJA&s" alt="cart-logo" />
         <div className="flex flex-col">
-          <h2 className="text-lg sm:text-xl lg:text-2xl font-bold">{data.jobTitle}</h2>
-          <p className="opacity-75 text-xs sm:text-base">{data.companyName}</p>
+          <h2 className="text-lg sm:text-xl lg:text-2xl font-bold">{data?.jobTitle}</h2>
+          <p className="opacity-75 text-xs sm:text-base">{data?.companyName}</p>
         </div>
       </div>
       <div className="grid gap-4 md:grid-cols-[1fr_auto] items-start">
@@ -26,26 +26,26 @@ function Jobs({ data }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-wrap gap-3 text-xs sm:text-sm opacity-80">
           <p className="flex items-center">
             <TbDeviceIpadHorizontalCode className="text-lg sm:text-xl text-[#309689] mr-2" />
-            {data.jobTitle}
+            {data?.jobTitle}
           </p>
           <p className="flex items-center">
             <LuClock className="text-lg sm:text-xl text-[#309689] mr-2" />
-            {data.jobType}
+            {data?.jobType}
           </p>
           <p className="flex items-center">
             <TfiWallet className="text-lg sm:text-xl text-[#309689] mr-2" />
-            ${data.salary} - $329990
+            ${data?.salary} - $329990
           </p>
           <p className="flex items-center">
             <SlLocationPin className="text-lg sm:text-xl text-[#309689] mr-2" />
-            {data.location}
+            {data?.location}
           </p>
         </div>
 
         {/* Button section */}
         <div className="w-full md:w-auto">
           <Link
-            to={`/job-details/:${data._id}`}
+            to={`/job-details/:${data?._id}`}
             className="w-full block text-center py-2 px-3 font-medium bg-[#309688f0] text-white rounded-sm hover:bg-[#309688c4] text-xs sm:text-base"
           >
             Job Details

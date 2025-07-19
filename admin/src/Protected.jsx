@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import { Navigate, replace } from 'react-router-dom'
+import Cookies from "js-cookie";
 
 function Protected({children}) {
-  const isLoggedIn = false;
+  
+ const isLoggedIn= !!(Cookies.get("accessToken"))
+  
   return isLoggedIn ? children : <Navigate to='/login' replace />
 }
 

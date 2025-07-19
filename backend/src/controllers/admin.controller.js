@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { Admin } from "../models/admin.model.js";
 import { JobPost } from "../models/JobPost.model.js";
 import { ApiError } from "../utils/ApiError.js";
@@ -121,7 +122,8 @@ const createPost = asyncHandler(async (req, res) => {
     description,
     skills,
     location,
-    isActive
+    isActive,
+    owner: req.admin._id
   })
   if(!createdJob){
     throw new ApiError(400, 'something went wrong while creating job')
@@ -156,10 +158,71 @@ const getAllJobs = asyncHandler(async (req, res) => {
   )
 })
 
+const getJobSingleAdmin = asyncHandler(async (req, res) => {
+  const admin = await req.admin
+  if(!admin){
+    throw new ApiError(201, 'admin account not found')
+  }
+
+  const jobs = await JobPost.aggregate([
+    {
+      $match: {
+        owner: new mongoose.Types.ObjectId(admin._id)
+      }
+    },
+    {
+      $sort: {
+        createdAt: -1
+      }
+    }
+  ])
+  
+  if(!jobs){
+    throw new ApiError(401, 'Error while finding jobs')
+  }
+  return res
+  .status(201)
+  .json(
+    new ApiResponse(
+      201,
+      jobs,
+      'success'
+    )
+  )
+})
+
+const logOut = asyncHandler(async (req, res) => {
+  await Admin.findByIdAndUpdate(
+    req.admin?._id,
+    {
+      $unset: {
+        refreshToken: 1
+      },
+    },
+    {
+      new: true
+    }
+  )
+  const options = {
+    httpOnly: true,
+    secure: true,
+    sameSite: "Strict"
+  }
+
+  return res
+    .status(200)
+    .clearCookie("accessToken", options)
+    .clearCookie("refreshToken", options)
+    .json(
+      new ApiResponse(200, {}, "User logout successfuly")
+    )
+})
 
 export {
   registerAdmin,
   loginAdmin,
   createPost,
-  getAllJobs
+  getAllJobs,
+  getJobSingleAdmin,
+  logOut
 }

@@ -1,12 +1,26 @@
 // JobsPage.jsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from '../SideBar/Sidebar';
 import Jobs from '../../HomePage/JobSection/Jobs';
 import { HiOutlineMenu } from 'react-icons/hi';
 import TopCompanies from '../Top-Company/TopCompanies';
+import axios from 'axios';
 
 function JobsPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const [data, setData] = useState([])
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get("/api/admin/get-all-jobs")
+        setData(res.data.data.totalJobs)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData()
+  }, [])
 
   return (
     <div className="w-full">
@@ -30,10 +44,9 @@ function JobsPage() {
 
         {/* Jobs Section */}
         <div className="w-full md:w-3/4 p-4">
-          <Jobs />
-          <Jobs />
-          <Jobs />
-          <Jobs />
+          {
+            data.slice(0, 5)?.map((data, index) => <Jobs key={index} data={data} />)
+          }
 
           <div className="flex justify-end items-center mt-10 gap-10">
             <div className="flex gap-2">

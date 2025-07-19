@@ -35,8 +35,8 @@ const jobPostSchema = new Schema({
     default: "active",
   },
   owner: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Admin'
+    type: mongoose.Types.ObjectId,
+    ref: 'admins'
   }
 }, {
   timestamps: true

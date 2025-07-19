@@ -1,4 +1,4 @@
-import { asyncHandler } from "../utils/asyncHandler.js";
+import asyncHandler from "../utils/asyncHandler.js";
 import { User } from "../models/user.model.js";
 import jwt from "jsonwebtoken";
 import { ApiError } from "../utils/ApiError.js";
@@ -14,7 +14,6 @@ export const veriFyJwt = asyncHandler( async (req, res, next) => {
     const user = await User.findById(decodedToken?._id).select("-password -refreshToken");
   
     if(!user){
-      //comming this part after some time
       throw new ApiError(401, "Invalid access Token");
     }
     req.user = user;
