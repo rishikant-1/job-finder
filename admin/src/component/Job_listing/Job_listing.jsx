@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import axiosInstace from "../../Api/axiosInstance";
 import { useNavigate } from "react-router-dom";
 
 const Job_listing = () => {
@@ -9,12 +9,11 @@ const Job_listing = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset
   } = useForm();
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post("/api/admin/job-post/", {
+      const res = await axiosInstace.post("/job-post/", {
         jobTitle: data.jobType,
         companyName: data.company,
         salary: data.salary,
@@ -22,12 +21,9 @@ const Job_listing = () => {
         description: data.description,
         skills: data.skills,
         location: data.location,
-      },
-        {
-          withCredentials: true
-        })
+      })
       console.log(res);
-      
+
       navigate("/home")
     } catch (error) {
       console.log(error);

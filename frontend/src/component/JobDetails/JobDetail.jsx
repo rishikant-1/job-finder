@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import NavBar from '../NavBar'
 import {
   FaBuilding,
@@ -12,9 +12,22 @@ import {
   FaGift,
   FaEnvelope,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import axios from 'axios';
+
 
 function JobDetail() {
+
+  const { id } = useParams()
+  console.log(id);
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await axios.post(`/api/admin/get-all-jobs/${id}`);
+      console.log(res.data.data);
+      
+    }
+    fetchData()
+  }, [])
   return (
     <div>
       <div className='bg-zinc-900'>

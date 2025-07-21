@@ -6,7 +6,7 @@ const AboutPage = () => {
       <h1 className="text-4xl font-bold text-gray-800 mb-6">About Us</h1>
 
       <p className="text-lg text-gray-600 mb-4">
-        Welcome to <span className="font-semibold text-violet-600">CodeSquadz</span> – where innovation meets opportunity.
+        Welcome to <span className="font-semibold text-violet-600">StackHire</span> – where innovation meets opportunity.
         We are a passionate team of developers, designers, and tech enthusiasts dedicated to helping individuals and businesses find the right talent and grow their careers.
       </p>
 
@@ -43,7 +43,7 @@ const AboutPage = () => {
       </div>
 
       <p className="text-gray-500 text-sm mt-12">
-        © {new Date().getFullYear()} CodeSquadz. All rights reserved.
+        © {new Date().getFullYear()} StackHire. All rights reserved.
       </p>
     </div>
   );

@@ -18,7 +18,7 @@ function Landing_page() {
           {!hideLandingContent && (
             <div className="mt-20 p-10 rounded-xl my-10 text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                Admin Panel Access
+                StackHire Admin Panel Access
               </h2>
               <p className="text-gray-600 text-lg mb-6 max-w-2xl mx-auto">
                 Securely manage job listings, monitor activity, and maintain platform integrity.

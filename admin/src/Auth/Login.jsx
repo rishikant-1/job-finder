@@ -52,7 +52,7 @@ function Login() {
   }, [])
   return (
     <div className="w-full bg-teal-50 md:min-w-md p-8 rounded-2xl shadow-md">
-          <h2 className="text-3xl font-bold text-center text-teal-700 mb-6">Welcome Back</h2>
+          <h2 className="text-3xl font-bold text-center text-teal-700 mb-6">Welcome Back to StackHire</h2>
           <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
             <div>
               <label htmlFor='102' className="block font-semibold mb-1">Email</label>

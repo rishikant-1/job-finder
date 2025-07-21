@@ -4,6 +4,7 @@ import { JobPost } from "../models/JobPost.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import asyncHandler from "../utils/asyncHandler.js";
+import jwt from 'jsonwebtoken'
 
 
 const generateAccessAndrefreshToken = async (adminId) => {
@@ -203,6 +204,7 @@ const logOut = asyncHandler(async (req, res) => {
       new: true
     }
   )
+  
   const options = {
     httpOnly: true,
     secure: true,
@@ -218,11 +220,43 @@ const logOut = asyncHandler(async (req, res) => {
     )
 })
 
+const refreshAccessToken = asyncHandler(async (req, res) => {
+  const incommingRefreshToken = req.cookies.refreshToken;
+  
+  if(!incommingRefreshToken){
+    throw new ApiError(401, "Unothorized Request")
+  }
+
+  const decodedToken = jwt.verify(incommingRefreshToken, process.env.REFRESH_TOKEN_SECRET)
+  const admin = await Admin.findById(decodedToken._id);
+  
+  if(!admin){
+    throw new ApiError(401, "User not found")
+  }
+  
+  const {accessToken, refreshToken} = await generateAccessAndrefreshToken(admin._id)
+  const option = {
+    secure: true,
+    httpOnly: true
+  }
+  return res
+  .status(201)
+  .cookie(accessToken, option)
+  .cookie(refreshToken, option)
+  .json( 
+    new ApiResponse(
+      201,
+      {refreshToken ,accessToken},
+      'token refreshed success'
+    )
+  )
+})
 export {
   registerAdmin,
   loginAdmin,
   createPost,
   getAllJobs,
   getJobSingleAdmin,
-  logOut
+  logOut,
+  refreshAccessToken
 }

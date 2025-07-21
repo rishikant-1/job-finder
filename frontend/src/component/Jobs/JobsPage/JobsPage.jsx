@@ -8,13 +8,19 @@ import axios from 'axios';
 
 function JobsPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [jobs, setJobs] = useState([])
+  const [currentPageJobs, setCurrentPageJobs] = useState(1)
+  const jobsPerPage = 6;
 
-  const [data, setData] = useState([])
+  const lastIndex = currentPageJobs * jobsPerPage;
+  const firstIndex = lastIndex - jobsPerPage;
+  const currentJobs = jobs.slice(firstIndex, lastIndex)
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await axios.get("/api/admin/get-all-jobs")
-        setData(res.data.data.totalJobs)
+        setJobs(res.data.data.totalJobs)
       } catch (error) {
         console.log(error);
       }
@@ -45,15 +51,19 @@ function JobsPage() {
         {/* Jobs Section */}
         <div className="w-full md:w-3/4 p-4">
           {
-            data.slice(0, 5)?.map((data, index) => <Jobs key={index} data={data} />)
+            currentJobs?.map((data, index) => <Jobs key={index} data={data} />)
           }
 
-          <div className="flex justify-end items-center mt-10 gap-10">
-            <div className="flex gap-2">
-              <button className="py-1 px-6 bg-white text-[#309689] font-semibold rounded-md border border-[#309689]">1</button>
-              <button className="py-1 px-6 bg-[#309689] text-white font-semibold rounded-md">2</button>
-            </div>
-            <button className="py-1 px-6 bg-white text-[#309689] font-semibold rounded-md border border-[#309689]">Next</button>
+          <div className="flex justify-end items-center mt-10 gap-5 pr-10">
+            {
+              [...Array(Math.ceil(jobs.length/jobsPerPage))].map((_, index) => (
+                <button key={index} 
+                onClick={() => setCurrentPageJobs(index + 1)}
+                className='px-4 rounded-md bg-[#30968849]'>
+                  {index+1}
+                </button>
+              ))
+            }
           </div>
         </div>
       </div>

@@ -34,7 +34,7 @@ function TextIcon() {
             <FiMail className="text-teal-600 text-2xl mt-1" />
             <div>
               <h4 className="font-semibold text-lg">Send us email</h4>
-              <p className="text-gray-600">kramulous@sbcglobal.net</p>
+              <p className="text-gray-600">stackhire@sbcglobal.net</p>
             </div>
           </div>
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import JobList from './JobList';
-import axios from 'axios';
 import {Link} from 'react-router-dom'
+import axiosInstace from '../../Api/axiosInstance';
 
 function Home() {
   const [jobs, setJobs] = useState([]);
@@ -9,7 +9,7 @@ function Home() {
   useEffect(() => {
     const fetchJobData = async () => {
       try {
-        const res = await axios.post("/api/admin/getjob-single-admin");
+        const res = await axiosInstace.post("/api/admin/getjob-single-admin");
 
         setJobs(res.data.data);
       } catch (error) {

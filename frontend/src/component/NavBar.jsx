@@ -8,7 +8,7 @@ function NavBar({white}) {
       {/* Logo */}
       <div className="flex items-center gap-2">
         <LuHandshake className="text-2xl" />
-        <span className="text-xl font-bold">CodeSquadz</span>
+        <span className="text-xl font-bold">StackHire</span>
       </div>
 
       {/* Navigation Links */}

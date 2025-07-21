@@ -22,7 +22,7 @@ const Sidebar = () => {
 
       <div className='h-screen'>
 
-        <div className="p-4 text-xl font-bold border-b">Job Admin</div>
+        <div className="p-4 text-xl font-bold border-b">StackHire</div>
 
         <nav className="mt-4 flex flex-col gap-1">
           {navLinks.map((link) => (

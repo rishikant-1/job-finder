@@ -11,7 +11,7 @@ const JobList = ({ jobs }) => {
         <span className="h-10 w-10 text-2xl font-semibold rounded-full bg-purple-200 flex items-center justify-center">rt</span>
         <div>
           <div className="font-medium text-gray-900">{jobs.companyName}</div>
-          <div className="text-gray-500 text-xs">example@gmail.com</div>
+          <div className="text-gray-500 text-xs">StackHire@gmail.com</div>
         </div>
       </div>
 

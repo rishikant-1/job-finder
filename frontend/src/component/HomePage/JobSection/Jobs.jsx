@@ -45,7 +45,7 @@ function Jobs({ data }) {
         {/* Button section */}
         <div className="w-full md:w-auto">
           <Link
-            to={`/job-details/:${data?._id}`}
+            to={`/job-details/${data?._id}`}
             className="w-full block text-center py-2 px-3 font-medium bg-[#309688f0] text-white rounded-sm hover:bg-[#309688c4] text-xs sm:text-base"
           >
             Job Details
