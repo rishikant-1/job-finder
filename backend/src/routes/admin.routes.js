@@ -6,7 +6,8 @@ import {
   getAllJobs,
   getJobSingleAdmin,
   logOut,
-  refreshAccessToken
+  refreshAccessToken,
+  lo
 } from "../controllers/admin.controller.js";
 import { adminVeriFyJwt } from "../middleware/adminVerifyJwt.js";
 
@@ -21,7 +22,7 @@ router.route("/job-post").post(adminVeriFyJwt, createPost)
 router.route("/getjob-single-admin").post(adminVeriFyJwt, getJobSingleAdmin)
 router.route("/logout").post(adminVeriFyJwt, logOut)
 router.route("/refresh-token").post(refreshAccessToken)
-router.route("/").get(console.log("xcvbnm,")
-)
+router.route("/").get(lo)
+
 
 export default router
