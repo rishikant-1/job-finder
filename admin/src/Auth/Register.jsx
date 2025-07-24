@@ -21,22 +21,18 @@ function Register() {
         password: data.confirmPassword,
         username: data.username
       })
-      console.log('user success', response.data);
-      setTimeout(()=>{
-        if (response.status===200) {
-          toast.success("You have registered",{autoClose: 1000})
-          navigate("/register")
-        }
-      },1500)
-    } catch (err) {
-      if (err.response?.status === 409) {
-        console.log(err);
+      toast.success("You have registered", { autoClose: 1000 })
 
-        alert(err.response.data.message);
-      } else {
-        toast.warn("Something went wrong")
+      if (response.status === 200) {
+        setTimeout(() => {
+          navigate("/register")
+          console.log('user success', response.data);
+        }, 1500)
       }
-    }   
+    } catch (err) {
+       toast.warn("Something went wrong")
+       console.log(err);
+    }
 
   }
   useEffect(() => {

@@ -3,7 +3,7 @@ import axios from 'axios'
 const axiosInstace = axios.create({
   baseURL: 'https://stackhire-8hqy.onrender.com/api/admin',
   withCredentials: true
-})
+})  
 
 let isRefreshing = false;
 

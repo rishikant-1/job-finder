@@ -6,7 +6,11 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   server: {
     proxy: {
-      '/api/admin/': 'https://stackhire-8hqy.onrender.com'
+      '/api/admin': {
+        target: 'https://job-finder-y1cr.onrender.com',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/api\/admin/, '/api/admin')
+      }
     }
   },
   plugins: [
