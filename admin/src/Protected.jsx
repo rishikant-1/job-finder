@@ -1,14 +1,12 @@
-import React, { useState } from 'react'
-import { Navigate, replace } from 'react-router-dom'
-import Cookies from "js-cookie";
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-function Protected({children}) {
+function Protected({ children }) { 
   
- const isLoggedIn= !!(Cookies.get("accessToken")) || true
- console.log(isLoggedIn);
- 
+const isLoggedIn = useSelector((state) => state.auth.isAuthenticated);
   
-  return isLoggedIn ? children : <Navigate to='/login' replace />
+  return isLoggedIn ? children : <Navigate to="/login" replace />;
 }
 
-export default Protected
+export default Protected;

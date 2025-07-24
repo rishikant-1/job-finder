@@ -1,8 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
+const storedAdmin = localStorage.getItem("admin")
+const initialAdmin = storedAdmin ? JSON.parse(storedAdmin) : null
+
 const initialState = {
-  user: null,
-  isAuthenticated: false
+  admin: initialAdmin,
+  isAuthenticated: !!initialAdmin
 }
 
 const authSlice = createSlice({
@@ -10,11 +14,11 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action) => {
-      state.user = action.payload;
+      state.admin = action.payload;
       state.isAuthenticated = true;
     },
     logOut: (state) => {
-      state.user = null;
+      state.admin = null;
       state.isAuthenticated = false;
     }
   }

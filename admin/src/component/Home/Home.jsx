@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import JobList from './JobList';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axiosInstace from '../../Api/axiosInstance';
 
 function Home() {
@@ -9,7 +9,7 @@ function Home() {
   useEffect(() => {
     const fetchJobData = async () => {
       try {
-        const res = await axiosInstace.post("/api/admin/getjob-single-admin");
+        const res = await axiosInstace.post("/getjob-single-admin");
 
         setJobs(res.data.data);
       } catch (error) {
@@ -34,13 +34,16 @@ function Home() {
           Create Job
         </Link>
       </div>
-      <ul className='grid grid-cols-6 list-none mt-20'>
-            <li className="col-span-2 pl-6 text-left text-xl font-bold text-gray-700">Company Name</li>
-            <li className="text-left pl-6 font-semibold text-gray-700">Job Title</li>
-            <li className="text-left pl-6 font-semibold text-gray-700">Status</li>
-            <li className="text-left pl-6 font-semibold text-gray-700">Role</li>
-            <li className="text-left pl-6 font-semibold text-gray-700">Action</li>
-          </ul>
+      {/* Visible only on desktop */}
+      <ul className="grid-cols-6 list-none mt-20 px-4 text-sm font-semibold text-gray-700 
+        hidden md:grid">
+        <li className="col-span-2 text-left">Company Name</li>
+        <li className="text-left">Job Title</li>
+        <li className="text-left">Status</li>
+        <li className="text-left">Role</li>
+        <li className="text-left">Action</li>
+      </ul>
+
       <div className="flex-1">
         {
           jobs.map((data, index) => <JobList key={index} jobs={data} />)

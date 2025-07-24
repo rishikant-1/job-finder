@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { FaHome, FaPlus, FaBriefcase, FaSignOutAlt, FaBars } from 'react-icons/fa';
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const navLinks = [
     { name: 'Dashboard', path: '/', icon: <FaHome /> },
@@ -13,17 +16,22 @@ const Sidebar = () => {
     { name: 'Manage Jobs', path: '/jobs', icon: <FaBriefcase /> },
   ];
   const handleLogOut = async () => {
-    const re=await axios.post('/api/admin/logout')
-    console.log(re);
-    
+    const response = await axios.post('/api/admin/logout')
+    if (response.status === 200) {
+      localStorage.removeItem("admin")
+      toast.success("LogOut Success", { autoClose: 1000 })
+      setTimeout(() => {
+        navigate("/")
+      }, 1500)
+
+    }
+
   }
   return (
     <>
-
       <div className='h-screen'>
-
+        <ToastContainer />
         <div className="p-4 text-xl font-bold border-b">StackHire</div>
-
         <nav className="mt-4 flex flex-col gap-1">
           {navLinks.map((link) => (
             <NavLink

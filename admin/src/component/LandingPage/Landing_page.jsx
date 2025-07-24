@@ -7,6 +7,7 @@ import { useLocation } from 'react-router-dom';
 function Landing_page() {
   const location = useLocation()
   const hideLandingContent = ["/login", "/register"].includes(location.pathname);
+  
   return (
     <div className=' w-full'>
       <div className='relative z-10'>
