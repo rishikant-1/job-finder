@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
-import Navbar from './Navbar';
+import { ToastContainer, toast } from 'react-toastify';
 
 function Register() {
   const [passwordConfirm, setPasswordConfirm] = useState(false);
@@ -22,17 +22,21 @@ function Register() {
         username: data.username
       })
       console.log('user success', response.data);
-      navigate("/login")
+      setTimeout(()=>{
+        if (response.status===200) {
+          toast.success("You have registered")
+          navigate("/register")
+        }
+      },100)
     } catch (err) {
       if (err.response?.status === 409) {
         console.log(err);
 
         alert(err.response.data.message);
       } else {
-        console.error(err);
-        alert("Something went wrong. Please try again.");
+        toast.warn("Something went wrong")
       }
-    }
+    }   
 
   }
   useEffect(() => {

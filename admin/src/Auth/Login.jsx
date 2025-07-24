@@ -44,7 +44,8 @@ function Login() {
       localStorage.setItem("admin", JSON.stringify(response.data.data.admin))
       const admin = JSON.parse(localStorage.getItem("admin"))
       dispatch(login(admin))
-
+        console.log(admin);
+        
       setTimeout(() => {
         navigate("/home")
       }, 1500)

@@ -251,9 +251,6 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
   )
 })
 
-const lo = (req, res)=>{
-  res.send("gcghvhbjnih")
-}
 
 export {
   registerAdmin,
@@ -263,5 +260,5 @@ export {
   getJobSingleAdmin,
   logOut,
   refreshAccessToken,
-  lo
+  
 }
