@@ -24,10 +24,10 @@ function Register() {
       console.log('user success', response.data);
       setTimeout(()=>{
         if (response.status===200) {
-          toast.success("You have registered")
+          toast.success("You have registered",{autoClose: 1000})
           navigate("/register")
         }
-      },100)
+      },1500)
     } catch (err) {
       if (err.response?.status === 409) {
         console.log(err);
