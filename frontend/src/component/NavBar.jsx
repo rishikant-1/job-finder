@@ -2,7 +2,7 @@ import React from 'react';
 import { LuHandshake } from 'react-icons/lu';
 import { NavLink } from 'react-router-dom';
 
-function NavBar({white}) {
+function NavBar() {
   return (
     <nav className="w-full h-16 text-white flex flex-nowrap items-center justify-between px-0 sm:px-10 md:px-16 z-10 bg-transparent">
       {/* Logo */}

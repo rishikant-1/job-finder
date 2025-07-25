@@ -7,7 +7,7 @@ export const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
     // Initialize user from localStorage if available
     const storedUser = localStorage.getItem("user");
-    return storedUser ? JSON.parse(storedUser) : {};
+    return storedUser ? JSON.parse(storedUser) : null;
   });
   
   return (

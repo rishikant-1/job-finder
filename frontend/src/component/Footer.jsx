@@ -35,7 +35,7 @@ function Footer() {
           <ul className="space-y-2 text-gray-300">
             <li>Telecommunications</li>
             <li>Hotels & Tourism</li>
-            <li>Construction</li>
+            <li><a href='https://stackhire-8hqy.onrender.com'>As a Recruter</a></li>
             <li>Education</li>
             <li>Financial Services</li>
           </ul>
