@@ -11,7 +11,6 @@ function Home() {
     const fetchJobData = async () => {
       try {
         const res = await axios.post("https://job-finder-y1cr.onrender.com/api/admin/getjob-single-admin");
-
         setJobs(res.data.data);
       } catch (error) {
         console.error("Error fetching jobs:", error);
