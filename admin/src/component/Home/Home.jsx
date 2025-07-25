@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import JobList from './JobList';
 import { Link } from 'react-router-dom'
 import axiosInstace from '../../Api/axiosInstance';
+import axios from 'axios';
 
 function Home() {
   const [jobs, setJobs] = useState([]);

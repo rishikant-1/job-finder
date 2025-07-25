@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import axiosInstace from "../../Api/axiosInstance";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Job_listing = () => {
   const navigate = useNavigate()
