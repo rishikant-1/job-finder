@@ -12,7 +12,7 @@ function Register() {
   const navigate = useNavigate()
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post('/api/admin/register', {
+      const response = await axios.post('https://job-finder-y1cr.onrender.com/api/admin/register', {
         fullname: {
           firstname: data.firstname,
           lastname: data.lastname

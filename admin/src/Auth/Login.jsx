@@ -5,6 +5,7 @@ import axios from 'axios';
 import { login } from '../redux/authSlice';
 import { useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
+import axiosInstace from '../Api/axiosInstance';
 
 function Login() {
   const [captcha, setCaptcha] = useState('');
@@ -33,7 +34,7 @@ function Login() {
     }
     try {
       //api handling
-      const response = await axios.post('/api/admin/login', {
+      const response = await axiosInstace.post('/login', {
         password: data.password,
         email: data.email
       },
