@@ -14,7 +14,7 @@ const Job_listing = () => {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post("https://job-finder-y1cr.onrender.com/api/admin/job-post/", {
+      const res = await axios.post("https://job-finder-y1cr.onrender.com/api/admin/job-post", {
         jobTitle: data.jobType,
         companyName: data.company,
         salary: data.salary,
@@ -22,7 +22,10 @@ const Job_listing = () => {
         description: data.description,
         skills: data.skills,
         location: data.location,
-      })
+      },
+    {
+      withCredentials: true
+    })
       console.log(res);
 
       navigate("/home")
