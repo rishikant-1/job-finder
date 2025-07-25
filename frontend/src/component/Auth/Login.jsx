@@ -34,11 +34,12 @@ function Login() {
       const response = await axios.post('/api/v1/users/login', {
         password: data.password,
         email: data.email
-      }
-      )
+      })
 
       console.log('error 1', response.data);
-      navigate("/home")
+      if(response.status===200){
+        navigate("/home")
+      }
     } catch (error) {
 
       console.log('errro22', error);
