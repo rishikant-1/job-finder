@@ -7,8 +7,8 @@ const app = express();
 
 
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || '*', // Use a specific origin or '*' for all origins
-  credentials: true, // Allow credentials
+  origin: 'https://stackhire-8hqy.onrender.com',
+  credentials: true,
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

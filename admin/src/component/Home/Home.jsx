@@ -10,7 +10,9 @@ function Home() {
   useEffect(() => {
     const fetchJobData = async () => {
       try {
-        const res = await axios.post("https://job-finder-y1cr.onrender.com/api/admin/getjob-single-admin",{withCredentials: true});
+        const res = await axios.post("https://job-finder-y1cr.onrender.com/api/admin/getjob-single-admin",
+          {},
+          {withCredentials: true});
         setJobs(res.data.data);
       } catch (error) {
         console.error("Error fetching jobs:", error);

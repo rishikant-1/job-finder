@@ -5,7 +5,7 @@ import asyncHandler from '../utils/asyncHandler.js';
 
 export const adminVeriFyJwt = asyncHandler( async (req, res, next) => {
   try {
-    const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ","");
+    const token = await req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ","");
     if(!token){
       throw new ApiError(401, "UnAuthorized Request");
     }
