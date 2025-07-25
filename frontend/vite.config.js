@@ -6,8 +6,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   server: {
     proxy: {
-      '/api/v1/': 'http://localhost:8000',
-      '/api/admin/': 'http://localhost:8000'
+      '/api/v1/': 'https://job-finder-1-mfre.onrender.com/',
+      '/api/admin/': 'https://stackhire-8hqy.onrender.com'
     }
   },
   plugins: [
