@@ -34,7 +34,7 @@ function Login() {
     }
     try {
       //api handling
-      const response = await axiosInstace.post('/login', {
+      const response = await axios.post('https://job-finder-y1cr.onrender.com/api/admin/login', {
         password: data.password,
         email: data.email
       },
