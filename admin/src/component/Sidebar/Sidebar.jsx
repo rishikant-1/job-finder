@@ -16,7 +16,7 @@ const Sidebar = () => {
     { name: 'Manage Jobs', path: '/jobs', icon: <FaBriefcase /> },
   ];
   const handleLogOut = async () => {
-    const response = await axios.post('/api/admin/logout')
+    const response = await axios.post('https://job-finder-y1cr.onrender.com/api/admin/logout')
     if (response.status === 200) {
       localStorage.removeItem("admin")
       toast.success("LogOut Success", { autoClose: 1000 })

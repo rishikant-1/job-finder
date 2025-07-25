@@ -13,7 +13,7 @@ const Job_listing = () => {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axiosInstace.post("/job-post/", {
+      const res = await axios.post("https://job-finder-y1cr.onrender.com/api/admin/job-post/", {
         jobTitle: data.jobType,
         companyName: data.company,
         salary: data.salary,
